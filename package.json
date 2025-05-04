@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "concaveman": "^1.2.1",
+    "js-yaml": "^4.1.0",
+    "three": "^0.176.0"
+  },
+  "devDependencies": {
+    "vite": "^6.3.4"
+  }
+}
