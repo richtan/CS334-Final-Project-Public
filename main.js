@@ -226,7 +226,7 @@ async function generate(filename) {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    const directionalLight = new THREE.DirectionalLight("white", 1);
     directionalLight.position.set(100, 100, 100);
     scene.add(directionalLight);
 
@@ -326,4 +326,4 @@ async function generate(filename) {
 
 window.generate = generate;
 
-generate("plane3.yml");
+generate("plane.yml");
