@@ -166,9 +166,27 @@ function drawLsystem(str, config) {
             ];
         };
 
+        const polynomialInterpolate = (base, tip, alpha, coefficients) => {
+            let baseZ = 0;
+            let tipZ = 0;
+            for (let i = 0; i < coefficients.length; i++) {
+                baseZ += coefficients[i] * Math.pow(1 - alpha, coefficients.length - i - 1);
+                tipZ += coefficients[i] * Math.pow(alpha, coefficients.length - i - 1);
+            }
+            return [
+                base.x * (1 - alpha) + tip.x * alpha,
+                base.y * (1 - alpha) + tip.y * alpha,
+                base.z * baseZ + tip.z * tipZ
+            ];
+        };
+
         for (let layer = 0; layer <= config.coneLayers; layer++) {
             for (let i = 0; i < n; i++) {
-                points.push(...sphericalInterpolate(basePoints[i], tip, layer / config.coneLayers));
+                if (config.interpolateType === "polynomial") {
+                    points.push(...polynomialInterpolate(basePoints[i], tip, layer / config.coneLayers, config.polynomialInterpolationCoefficients));
+                } else {
+                    points.push(...sphericalInterpolate(basePoints[i], tip, layer / config.coneLayers));
+                }
             }
         }
 
@@ -241,11 +259,11 @@ async function generate(filename) {
     scene.add(sun);
 
     const meshGroup = new THREE.Group();
-    const parts = ["fuselage", "cockpit", "rear", "leftwing", "rightwing", "rudder",
-        "leftelevator", "rightelevator", "leftengine1", "rightengine1"];
-    for (const partName of parts) {
+    // const parts = ["fuselage", "cockpit", "rear", "leftwing", "rightwing", "rudder",
+    //     "leftelevator", "rightelevator", "leftengine1", "rightengine1"];
+    for (const partName of Object.keys(config)) {
         const partConfig = config[partName];
-        if (!partConfig) continue;
+        if (!('type' in partConfig)) continue;
         const partStr = parseLsystem(partConfig.axiom, partConfig.iterationCount, new Map(Object.entries(partConfig.rules)));
         const part = drawLsystem(partStr, partConfig);
         meshGroup.add(part);

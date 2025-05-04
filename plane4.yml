@@ -1,0 +1,226 @@
+background:
+  color: 0xffffff
+  directionalLightPosition: [1000, 1000, 1000]
+
+sun:
+  color: "#ffff00"
+  radius: 10
+
+platform:
+  size: [200, 1, 200]
+  color: "#567d46"
+
+fuselage:
+  type: normal
+  outlineType: convexHull
+  axiom: F-F-F-F
+  deltaAngle: 1
+  startAngle: 90
+  iterationCount: 3
+  scale: 0.2
+  rules:
+    F: F+F+F+F+F+F+F+F
+  extrudePath:
+    - [0, 0, 0]
+    - [0, 0, 375]
+  extrudeConfig:
+  position: [0, 10, -30]
+  color: "lightgreen"
+  rotation: [0, 0, 0]
+
+cockpit:
+  type: cone
+  outlineType: convexHull
+  axiom: F-F-F-F
+  deltaAngle: 1
+  startAngle: 90
+  iterationCount: 3
+  scale: 0.2
+  rules:
+    F: F+F+F+F+F+F+F+F
+  position: [11.5, 21.7, 44.9]
+  color: "lightgreen"
+  tipPosition: [-60, -25, 80]
+  coneLayers: 15
+  rotation: [0, 0, 0]
+
+rear:
+  type: cone
+  outlineType: convexHull
+  axiom: F-F-F-F
+  deltaAngle: 1
+  startAngle: 90
+  iterationCount: 3
+  scale: 0.2
+  rules:
+    F: F+F+F+F+F+F+F+F
+  position: [11.3, 21.5, -30]
+  color: "lightgreen"
+  tipPosition: [-50, 10, -150]
+  coneLayers: 15
+  rotation: [0, 0, 0]
+
+leftwing:
+  type: normal
+  outlineType: convexHull
+  axiom: F
+  deltaAngle: 25.7
+  startAngle: 90
+  iterationCount: 6
+  scale: 0.15
+  rules:
+    F: F[+F]F[-F]F
+  extrudePath:
+    - [0, 0, 0]
+    - [0, 0, 20]
+  extrudeConfig:
+  position: [110, 39, -5]
+  color: "cyan"
+  rotation: [-90, 175, 0]
+
+rightwing:
+  type: normal
+  outlineType: convexHull
+  axiom: F
+  deltaAngle: 25.7
+  startAngle: 90
+  iterationCount: 6
+  scale: 0.15
+  rules:
+    F: F[-F]F[+F]F
+  extrudePath:
+    - [0, 0, 0]
+    - [0, 0, 20]
+  extrudeConfig:
+  position: [-110, 39, -5]
+  color: "cyan"
+  rotation: [90, -5, 0]
+
+rudder:
+  type: normal
+  outlineType: convexHull
+  axiom: X
+  deltaAngle: 17
+  startAngle: 90
+  iterationCount: 6
+  scale: 0.17
+  rules:
+    X: F[+X]F[−X]F[--X]X
+    F: FF
+  extrudePath:
+    - [0, 0, 0]
+    - [0, 0, 15]
+  extrudeConfig:
+  position: [1.7, 47, -55]
+  color: "white"
+  rotation: [60, -90, 0]
+
+leftelevator:
+  type: normal
+  outlineType: convexHull
+  axiom: X
+  deltaAngle: 17
+  startAngle: 90
+  iterationCount: 6
+  scale: 0.17
+  rules:
+    X: F[+X]F[−X]F[--X]X
+    F: FF
+  extrudePath:
+    - [0, 0, 0]
+    - [0, 0, 15]
+  extrudeConfig:
+  position: [25, 22, -62]
+  color: "white"
+  rotation: [90, 180, 45]
+
+rightelevator:
+  type: normal
+  outlineType: convexHull
+  axiom: X
+  deltaAngle: 17
+  startAngle: 90
+  iterationCount: 6
+  scale: 0.17
+  rules:
+    X: F[+X]F[−X]F[--X]X
+    F: FF
+  extrudePath:
+    - [0, 0, 0]
+    - [0, 0, 15]
+  extrudeConfig:
+  position: [-25, 25, -62]
+  color: "white"
+  rotation: [90, 0, 45]
+
+leftengine1:
+  type: normal
+  outlineType: convexHull
+  axiom: F-F-F-F
+  deltaAngle: 1
+  startAngle: 90
+  iterationCount: 3
+  scale: 0.09
+  rules:
+    F: F+F+F+F+F+F+F+F
+  extrudePath:
+    - [0, 0, 0]
+    - [0, 0, 200]
+  extrudeConfig:
+  position: [50, 23, 0]
+  color: "aqua"
+  rotation: [0, 0, 45]
+
+leftengine2:
+  type: normal
+  outlineType: convexHull
+  axiom: F-F-F-F
+  deltaAngle: 1
+  startAngle: 90
+  iterationCount: 3
+  scale: 0.09
+  rules:
+    F: F+F+F+F+F+F+F+F
+  extrudePath:
+    - [0, 0, 0]
+    - [0, 0, 200]
+  extrudeConfig:
+  position: [75, 25, -5]
+  color: "aqua"
+  rotation: [0, 0, 45]
+
+rightengine1:
+  type: normal
+  outlineType: convexHull
+  axiom: F-F-F-F
+  deltaAngle: 1
+  startAngle: 90
+  iterationCount: 3
+  scale: 0.09
+  rules:
+    F: F+F+F+F+F+F+F+F
+  extrudePath:
+    - [0, 0, 0]
+    - [0, 0, 200]
+  extrudeConfig:
+  position: [-40, 23, 0]
+  color: "aqua"
+  rotation: [0, 0, 45]
+
+rightengine2:
+  type: normal
+  outlineType: convexHull
+  axiom: F-F-F-F
+  deltaAngle: 1
+  startAngle: 90
+  iterationCount: 3
+  scale: 0.09
+  rules:
+    F: F+F+F+F+F+F+F+F
+  extrudePath:
+    - [0, 0, 0]
+    - [0, 0, 200]
+  extrudeConfig:
+  position: [-65, 25, -5]
+  color: "aqua"
+  rotation: [0, 0, 45]
